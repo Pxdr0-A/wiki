@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>Edit Page {{ title }}</h1>
+
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    
+    <form action="{% url 'wiki:edit_entry' title %}" method="post">
+        {% csrf_token %} 
+        <!-- post request to the entry_page view url (name = create_page) -->
+        {{ edit_entry_form }}
+        <input type="submit" value="Save Entry">
+    </form>
+{% endblock %}

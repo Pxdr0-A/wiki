@@ -1,0 +1,19 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Ups!
+{% endblock %}
+
+{% block body %}
+    <h1>Did you mean?</h1>
+
+    <ul>
+        {% for i in is_this %}
+            <li><a href="{% url 'wiki:entry_page' i %}">{{ i }}</a></li>
+        {% empty %}
+            <p> I seriously did not understand what you mean... </p>
+        {% endfor %}
+        <a href="{% url 'wiki:index' %}"> Search Again </a>
+    </ul>
+
+{% endblock %}
